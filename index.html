@@ -36,7 +36,11 @@
         nav a:hover {
             color: #ff6b35;
         }
+        
         .hero {
+            position: relative;
+            z-index: 1;
+            overflow: hidden; 
             background-image: url('https://via.placeholder.com/1200x400?text=Delicious+Street+Food'); /* Replace with actual image */
             background-size: cover;
             height: 400px;
@@ -46,7 +50,16 @@
             color: white;
             text-align: center;
         }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* black overlay with 50% opacity */
+            z-index: -1; /* send behind the content */
+            pointer-events: none; /* so clicks pass through */
+        }
         .hero h2 {
+            position: relative;
             font-size: 3em;
             background-color: rgba(0,0,0,0.4);
             padding: 20px;
@@ -121,7 +134,7 @@
         <a href="#contact">Contact</a>
     </nav>
     
-    <section id="home" class="hero">
+    <section id="home" class="hero"> 
         <h2>Welcome to Inday Street Food!</h2>
     </section>
     
